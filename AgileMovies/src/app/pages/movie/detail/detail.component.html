@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+<div class="container-md my-3">
+  <h2 class="px-2 px-lg-0">{{ movie.title }}</h2>
+
+  <div class="mb-4 text-center">
+    <img src="{{imgURL+movie.poster_path}}" alt="" class="img-movie-large mx-auto">
+  </div>
+
+  <div class="d-flex">
+    <div class="flex-shrink-0">
+      <img src="{{imgURL+movie.backdrop_path }}" alt="..." class="img-movie">
+    </div>
+    <div class="flex-grow-1 ms-3">
+      {{ movie.overview }}
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, eos quaerat veritatis architecto quasi dicta nihil ducimus molestiae? Ea perspiciatis eos illo quasi soluta velit aspernatur nisi nam minima necessitatibus.
+    </div>
+  </div>
+
+  <div class="container-actors mt-5">
+    <h2 class="px-2 px-lg-0">Reparto</h2>
+    <div class="row g-0 g-md-2"infiniteScroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()">
+      <app-card-actor *ngFor="let actor of listView" class="col-12 col-md-6 col-xl-3" [actor]="actor" [imgUrl]="imgUrlActors"></app-card-actor>
+    </div>
+  </div>
+</div>

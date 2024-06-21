@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+<div class="container-md px-0 my-3">
+  <div class="carousel-content">
+    <h2 class="px-2 px-lg-0">Peliculas en estreno</h2>
+    <div id="carouselMovie" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div *ngFor="let pelicula of peliculasEstreno; let i = index" [ngClass]="{'carousel-item': true,  'active': i == 1 }" >
+          <img src="{{imgUrl + pelicula.poster_path}}" 
+            class="d-block mx-auto" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselMovie" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselMovie" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="movies-content mt-5">
+    <h2 class="px-2 px-lg-0">Peliculas más populares</h2>
+    <div class="row g-0 g-md-2" infiniteScroll
+    [infiniteScrollDistance]="1"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()">
+      <app-card-movie *ngFor="let pelicula of peliculasPopulares" class="col-12 col-md-6 col-xl-3" [pelicula]="pelicula" [imgUrl]="imgUrlPopulares" ></app-card-movie>
+    </div>
+  </div>
+</div>
